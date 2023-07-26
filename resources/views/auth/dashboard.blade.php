@@ -90,7 +90,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">{{ $item->jumlah }}</h2>
+                            <h2 class="text-white invoice-num">{{ number_format($item->jumlah) }}</h2>
                             <span class="text-white fs-18">Total Faskes Tipe {{$item->tipe}}</span>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
             @foreach ($vaksin as $item)
 
             <div class="col-xl-12 col-xxl-12 col-sm-12">
-                <div class="card bg-dark invoice-card">
+                <div class="card bg-primary invoice-card">
                     <div class="card-body d-flex">
                         <div class="icon me-3">
                             <svg width="33px" height="32px">
@@ -121,7 +121,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">{{ $item->kuota }}</h2>
+                            <h2 class="text-white invoice-num">{{ number_format($item->kuota) }}</h2>
                             <span class="text-white fs-18">Vaksin {{$item->nm_vaksin}}</span>
                         </div>
                     </div>
