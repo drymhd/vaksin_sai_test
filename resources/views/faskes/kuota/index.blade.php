@@ -63,6 +63,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if (count($data->kuota) > 0)
+
                                         @foreach ($data->kuota as $item)
                                         <tr>
                                             <th>{{$loop->iteration}}</th>
@@ -86,6 +88,11 @@
                                             </td> --}}
                                         </tr>
                                         @endforeach
+                                        @else
+                                        <tr>
+                                            <th colspan="4" class="text-center">Tidak Ada Data,  <a class="text-primary" href="{{route('faskes.kuota.create',  $data->uuid)}}">Tambah</a>?</th>
+                                        </tr>
+                                        @endif
 
                                     </tbody>
                                 </table>

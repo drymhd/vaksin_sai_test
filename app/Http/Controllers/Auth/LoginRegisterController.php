@@ -1,13 +1,17 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\AppHelper;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\Faskes;
+use App\Models\FaskesVaksin;
 use App\Models\Provinsi;
 use App\Models\Vaksin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
@@ -49,7 +53,8 @@ class LoginRegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'api_token' => hash('sha256', Str::random(60))
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -105,13 +110,21 @@ class LoginRegisterController extends Controller
     {
         if(Auth::check())
         {
-            $provinsis = Provinsi::get();
+
+            $faskes = Faskes::select('tipe', DB::raw('COUNT(id) as jumlah'))->groupBy('tipe')->get();
+            $faskes->map(function($q){
+                $q->tipe = AppHelper::type($q->tipe);
+
+                return $q;
+            });
+
+            $vaksin = FaskesVaksin::join('vaksins', 'faskes_vaksins.vaksin_id', 'vaksins.id')->select('nm_vaksin', DB::raw('sum(kuota) as kuota'))->groupBy('vaksins.id')->get();
             $data = [
                 'faskes' => Faskes::get()->count(),
                 'vaksin' => Vaksin::get()->count(),
                 'user' => User::get()->count(),
             ];
-            return view('auth.dashboard', compact('provinsis', 'data'));
+            return view('auth.dashboard', compact('data', 'faskes', 'vaksin'));
         }
 
         return redirect()->route('login')
@@ -119,6 +132,7 @@ class LoginRegisterController extends Controller
             'email' => 'Please login to access the dashboard.',
         ])->onlyInput('email');
     }
+
 
     /**
      * Log out the user from application.

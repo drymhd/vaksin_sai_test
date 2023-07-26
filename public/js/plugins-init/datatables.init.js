@@ -39,6 +39,10 @@
             $.ajax({
                 'url': "/api/v1/test",
                 'method': "POST",
+                headers: {
+                    'Authorization': 'Bearer '+$('#token').val(),
+                    'Accept': 'application/json',
+                },
                 dataType: "json",
                 data: JSON.stringify({
                     'kota_id': kota_id,
@@ -77,6 +81,10 @@
             $.ajax({
                 'url': "/api/v1/test",
                 'method': "POST",
+                headers: {
+                    'Authorization': 'Bearer '+$('#token').val(),
+                    'Accept': 'application/json',
+                },
                 dataType: "json",
                 data: JSON.stringify({
                     'kota_id': kota_id,

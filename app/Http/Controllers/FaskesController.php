@@ -22,7 +22,7 @@ class FaskesController extends Controller
         })->join('kotas', 'faskes.kota_id', '=', 'kotas.id')->orderBy('faskes.id','asc')->paginate($per, ['faskes.*', 'kotas.nm_kota', DB::raw('@angka  := @angka  + 1 AS angka')]);
 
         $data->map(function($a){
-            $a->aksi = '<a class="btn btn-success btn-sm" href="'.route('faskes.kuota.index', $a->uuid).'">Lihat Kuota</a>';
+            $a->aksi = '<a class="btn btn-success btn-sm" href="'.route('faskes.kuota.index', $a->uuid).'">Kuota Vaksin</a>';
             return $a;
         });
         return view('faskes.index', compact('data'));
@@ -109,7 +109,7 @@ class FaskesController extends Controller
 
 
         if($data->update($request->all())){
-            return redirect('faskes');
+            return redirect('faskes')->withSuccess('Sukses Mengubah data');
         }
 
         return redirect()->route('faskes.edit', $data)->withErrors('Sesuatu Error Terjadi');

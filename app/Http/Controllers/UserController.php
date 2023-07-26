@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 
 class UserController extends Controller
 {
@@ -60,7 +62,9 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'photo' => $request->foto,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'api_token' => hash('sha256', Str::random(60))
+
             ]);
             if($data){
                 return redirect('user');

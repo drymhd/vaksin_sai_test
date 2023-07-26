@@ -8,6 +8,7 @@ use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\VaksinController;
 use App\Http\Controllers\UserController;
+use App\Models\Vaksin;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,7 @@ Route::prefix('faskes')->group(function(){
 })->middleware('auth');
 
 Route::resource('faskes', FaskesController::class)->middleware('auth');
+
+Route::get('/laporan', [VaksinController::class, 'laporan'])->name('laporan');
 
 

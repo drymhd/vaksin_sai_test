@@ -26,7 +26,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'photo'
+        'photo',
+        'api_token'
     ];
 
     protected $appends = ['photo_url'];

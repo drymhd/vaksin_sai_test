@@ -33,6 +33,7 @@ class KotaSeeder extends Seeder
             curl_close($ch);
 
             // Will dump a beauty json :3
+
             $kota = json_decode($result, true);
             foreach ($kota as $item) {
                 print("Seeder Kota " . $item['nama'] . " \n");
@@ -40,7 +41,6 @@ class KotaSeeder extends Seeder
 
                 $kota->uuid = Str::uuid();
                 $kota->provinsi_id = $data->id;
-                $kota->id = $item['id'];
                 $kota->nm_kota = $item['nama'];
                 $kota->save();
             }

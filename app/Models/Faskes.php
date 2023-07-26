@@ -11,7 +11,7 @@ class Faskes extends Model
     use HasFactory;
     use Uuid;
 
-    protected $fillable = ['uuid', 'nm_faskes', 'kota_id', 'type', 'telepon', 'alamat'];
+    protected $fillable = ['uuid', 'nm_faskes', 'kota_id', 'tipe', 'telepon', 'alamat'];
 
 
     public function kota(){

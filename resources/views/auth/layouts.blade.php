@@ -15,6 +15,7 @@
     <link href="{{ asset('vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/nouislider/nouislider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}">
     <!-- Style css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -123,6 +124,11 @@
                                 <span class="nav-text">Fasilitas Kesehatan</span>
                             </a>
                         </li>
+                        <li><a href="{{ route('laporan') }}" class="ai-icon" aria-expanded="false">
+                                <i class="flaticon-381-download"></i>
+                                <span class="nav-text">Laporan</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -162,13 +168,6 @@
         </div>
     @endguest
 
-    <div class="footer">
-
-        <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/" target="_blank">DexignLab</a>
-                2021</p>
-        </div>
-    </div>
 
     <!-- Required vendors -->
     <script src="{{ asset('vendor/global/global.min.js') }}"></script>

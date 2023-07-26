@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provinsi;
 use App\Models\Vaksin;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class VaksinController extends Controller
@@ -23,6 +25,22 @@ class VaksinController extends Controller
 
         return view('vaksin.index', compact('data'));
     }
+
+    public function laporan()
+    {
+        if(Auth::check())
+        {
+            $provinsis = Provinsi::get();
+
+            return view('laporan.index', compact('provinsis'));
+        }
+
+        return redirect()->route('login')
+            ->withErrors([
+            'email' => 'Please login to access the dashboard.',
+        ])->onlyInput('email');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -113,7 +131,7 @@ class VaksinController extends Controller
         }
 
         if($data->delete()){
-            return redirect('vaksin');
+            return redirect('vaksin')->withSuccess('Sukses Menghapus Data');
         }
 
         return redirect('vaksin.index')->withErrors('Sesuatu Error Terjadi');

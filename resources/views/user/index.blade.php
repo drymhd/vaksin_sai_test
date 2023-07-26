@@ -1,5 +1,10 @@
 @extends('auth.layouts')
 
+@section('title')
+    Pengguna
+@endsection
+
+
 @section('content')
         <!-- row -->
         <div class="container-fluid">
@@ -8,9 +13,6 @@
             @endphp
             <x-paginate :data="$data" :key="$key"></x-paginate>
         </div>
-    <!--**********************************
-        Content body end
-    ***********************************-->
 
 
 

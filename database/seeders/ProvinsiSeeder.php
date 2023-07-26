@@ -31,9 +31,6 @@ class ProvinsiSeeder extends Seeder
         // Will dump a beauty json :3
         $data = json_decode($result, true);
 
-        DB::statement("SET foreign_key_checks=0");
-        Provinsi::truncate();
-        DB::statement("SET foreign_key_checks=1");
 
         foreach ($data as $item) {
             print("Seeder Provisnsi ".$item['nama'] . " \n");

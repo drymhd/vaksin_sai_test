@@ -11,9 +11,6 @@
             @endphp
             <x-paginate :data="$data" :key="$key"></x-paginate>
         </div>
-    <!--**********************************
-        Content body end
-    ***********************************-->
 
 
 
