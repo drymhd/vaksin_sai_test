@@ -74,8 +74,11 @@
                 });
 
                 $('#example5 tbody').on('click', 'tr', function () {
-                    var data = $('#example5').DataTable().row(this).data();
-                    appendData(data);
+                    var tr = this;
+                    $(this).on('click','button', function(){
+                        var data = $('#example5').DataTable().row(tr).data();
+                        appendData(data);
+                    })
                 })
             });
 

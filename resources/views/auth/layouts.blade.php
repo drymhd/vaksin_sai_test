@@ -25,12 +25,13 @@
 
     <div id="preloader">
         <div class="waviy">
-            <span style="--i:1">V</span>
-            <span style="--i:2">A</span>
-            <span style="--i:3">K</span>
-            <span style="--i:4">S</span>
-            <span style="--i:5">I</span>
-            <span style="--i:6">N</span>
+            <img src="images/logo-full.png" class="d-block" alt="">
+            <span style="--i:1">T</span>
+            <span style="--i:2">U</span>
+            <span style="--i:3">N</span>
+            <span style="--i:4">G</span>
+            <span style="--i:5">G</span>
+            <span style="--i:6">U</span>
             <span style="--i:7">.</span>
             <span style="--i:8">.</span>
             <span style="--i:9">.</span>
