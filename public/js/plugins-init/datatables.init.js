@@ -12,13 +12,13 @@
     }
 
     function appendData(data){
-
+        console.log(data);
         $("#nm_faskes").html(`<b>${data.nm_faskes.toUpperCase()}</b>`);
 
         var content = '';
         if(data.kuota.length > 0){
             data.kuota.forEach(e => {
-                content += `<span class="badge badge-xl badge-info">${e.vaksin.nm_vaksin} : ${e.kuota} Kuota</span>`;
+                content += `<span class="badge badge-xl m-1 badge-info">${e.vaksin.nm_vaksin} : ${e.kuota} Kuota</span>`;
             });
         } else {
             content = `<div class="alert alert-danger solid alert-rounded ">Tidak ada kuota vaksin apapun</div>`;
@@ -33,8 +33,6 @@
     function load(kota_id){
         show();
 
-        if ( $.fn.DataTable.isDataTable( '#example5' ) ) {
-            $('#example5').DataTable().destroy();
 
             $.ajax({
                 'url': "/api/v1/test",
@@ -49,6 +47,10 @@
                 }),
                 'contentType': 'application/json'
             }).done(function (data) {
+                if ( $.fn.DataTable.isDataTable( '#example5' ) ) {
+                        $('#example5').DataTable().clear().destroy();
+                        $('#example5 tbody').off('click');
+                }
                 var table = $('#example5').DataTable({
                     aaData: data,
                     columns: [
@@ -72,53 +74,10 @@
                 });
 
                 $('#example5 tbody').on('click', 'tr', function () {
-                    var data = table.row(this).data();
-
-
-                });
-            });
-          } else {
-            $.ajax({
-                'url': "/api/v1/test",
-                'method': "POST",
-                headers: {
-                    'Authorization': 'Bearer '+$('#token').val(),
-                    'Accept': 'application/json',
-                },
-                dataType: "json",
-                data: JSON.stringify({
-                    'kota_id': kota_id,
-                }),
-                'contentType': 'application/json'
-            }).done(function (data) {
-                var table = $('#example5').DataTable({
-                    aaData: data,
-                    columns: [
-                        { data: "id" },
-                        { data: "nm_faskes" },
-                        { data: "tipe" },
-                        { data: "aksi" },
-                    ],
-                    searching: true,
-                    paging: true,
-                    select: false,
-                    info: false,
-                    lengthChange: false,
-                    language: {
-                        paginate: {
-                            next: '<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
-                            previous: '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'
-                        }
-                    }
-
-                });
-
-                $('#example5 tbody').on('click', 'tr', function () {
-                    var data = table.row(this).data();
+                    var data = $('#example5').DataTable().row(this).data();
                     appendData(data);
                 })
             });
-          }
 
 
 

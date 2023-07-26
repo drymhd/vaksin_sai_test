@@ -18,7 +18,7 @@ class KuotaSeeder extends Seeder
         $faskes = Faskes::get();
         $vaksin = Vaksin::get();
         foreach($faskes as $item){
-            print("Seeder Faskes ".$item->nm_fakses . " \n");
+            print("Seeder Faskes ". $item->nm_faskes . " \n");
             foreach($vaksin as $vak){
                 FaskesVaksin::create([
                     'faskes_id' => $item->id,

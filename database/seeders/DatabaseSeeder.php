@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KotaSeeder::class);
         $this->call(FaskesSeeder::class);
         $this->call(VaksinSeeder::class);
+        $this->call(KuotaSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Admin',
