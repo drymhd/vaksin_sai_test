@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->prefix('v1')->group(function(){
-    Route::post('test', [ApiController::class, 'test']);
+    Route::post('laporan', [ApiController::class, 'laporan']);
 });

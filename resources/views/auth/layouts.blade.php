@@ -25,7 +25,7 @@
 
     <div id="preloader">
         <div class="waviy">
-            <img src="images/logo-full.png" class="d-block" alt="">
+            <img src="{{asset('images/logo-full.png')}}" class="d-block" alt="">
             <span style="--i:1">T</span>
             <span style="--i:2">U</span>
             <span style="--i:3">N</span>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function test(Request $request)
+    public function laporan(Request $request)
     {
 
         $request->validate([

@@ -21,6 +21,8 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
+                                <button type="button" onclick="history.back()" class="btn btn-danger">Kembali</button>
+
                             </form>
                         </div>
                     </div>

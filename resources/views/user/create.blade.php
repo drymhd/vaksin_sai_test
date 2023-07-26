@@ -1,5 +1,10 @@
 @extends('auth.layouts')
 
+@section('title')
+    Tambah Pengguna
+@endsection
+
+
 @section('content')
         <!-- row -->
         <div class="container-fluid">

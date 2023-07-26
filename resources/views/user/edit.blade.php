@@ -1,11 +1,16 @@
 @extends('auth.layouts')
 
+@section('title')
+    Edit Pengguna
+@endsection
+
+
 @section('content')
         <!-- row -->
         <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Tambah User</h4>
+                        <h4 class="card-title">Edit User</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">

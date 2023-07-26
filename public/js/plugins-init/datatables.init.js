@@ -35,7 +35,7 @@
 
 
             $.ajax({
-                'url': "/api/v1/test",
+                'url': "/api/v1/laporan",
                 'method': "POST",
                 headers: {
                     'Authorization': 'Bearer '+$('#token').val(),
